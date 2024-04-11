@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Jucator{
+            constructor(nume, numar, pozitie, varsta){
+                this.nume = nume;
+                this.numar = numar;
+                this.pozitie = pozitie;
+                this.varsta = varsta;
+            }
+            alergare(){
+                console.log(`${this.nume} alearga!`)
+            }
+            inscrieGol(){
+                if(this.pozitie == 'atacant'){
+                    console.log(`${this.nume} marcheaza goluri des.`)
+                }else if (this.pozitie == 'portar'){
+                    console.log(`${this.nume} nu marcheaza`)
+                }else{
+                    console.log(`${this.nume} nu marcheaza`)
+                }
+            }
+            update(numeN, numarN, pozitieN, varstaN){
+                this.nume = numeN;
+                this.numar = numarN;
+                this.pozitie = pozitieN;
+                this.varsta = varstaN;
+            }
+        }
+
+        const jucator1 = new Jucator('Ronaldo', '7', 'atacant', '32');
+        const jucator2 = new Jucator('Iker', '1', 'protar', '40');
+
+        console.log(jucator1.varsta);
+        jucator1.inscrieGol();
+        console.log(jucator2);
+        jucator2.inscrieGol();
+
+        jucator2.update('Zsolt', 2, 'test', '30');
+        console.log(jucator2);
+
+    </script>
+</body>
+</html>
