@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <p>Exemplul de obiect in javascript</p>
+
+
+    <script>
+        //obiect ECMAScript 5
+        // var userObject = {
+        //     name: 'Adrian',
+        //     age: 40,
+        //     //array
+        //     favoriteFruits: ['mango', 'raspberry', 'blueberry'],
+        //     //obiect
+        //     car: {
+        //         make: 'Dacia',
+        //         model: 'Logan',
+        //         isFunctional: true
+        //     },
+        //     //array de obiecte
+        //     computer: [
+        //         {
+        //             manufacturer: 'Apple',
+        //             type: 'laptop'
+        //         },
+        //         {
+        //             manufacturer: 'Dell',
+        //             type: 'laptop'
+        //         }
+        //     ],
+        //     getData: function () { return "nume: " + this.name + ", varsta:" + this.age }
+        // };
+        // console.log(userObject.favoriteFruits[2]); // blueberry
+        // console.log(userObject.car.isFunctional); // true
+        // console.log(userObject.computer[0].manufacturer); // Apple
+        // console.log(userObject.computer[1].manufacturer); // Dell
+        // console.log(userObject.getData()); // ?
+
+
+        // // ECMAScript 6
+
+        class Animal {
+            size;
+            kilograms;
+            name;
+            static nrPicioare = 4;
+            constructor(size, kilograms, name) {
+                this.size = size;
+                this.kilograms = kilograms;
+                this.name = name;
+            }
+
+            getPrice() {
+                console.log('pret initial', this.kilograms * 2.25);
+            }
+        }
+
+        class Cat extends Animal {
+            constructor(size, kilograms, name, race) {
+                super(name, kilograms, name);
+                this.race = race;
+
+            }
+            getPrice() {
+
+                super.getPrice();
+                console.log('pret final', this.kilograms * 4.25);
+            }
+            weightMessage() {
+                return "Aceasta pisica cantareste " + this.kilograms + " kg si costa " + super.getPrice() + " euro.";
+            }
+        }
+
+        console.log(Cat.nrPicioare);
+        console.log(Cat.race);//nu
+
+        let c = new Cat(10, 30, "Ariel", "Pisica persana");
+
+        console.log(c.race);
+        console.log(c.nrPicioare);//nu
+        c.getPrice();
+
+        // console.log(c.weightMessage());
+
+
+    </script>
+</body>
+
+</html>
