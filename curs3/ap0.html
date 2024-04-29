@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Persoana {
+            nume;
+            prenume;
+            #contBancar;
+
+            constructor(fname, lname){
+                this.nume           = fname;
+                this.prenume        = lname;
+            }
+
+            set contBancar(cont){
+                if(cont.length == 14){
+                this.#contBancar    = cont;
+                }else{
+                    throw 'Eroare cont bancar';
+                }
+            }
+
+            get contBancar(){
+                return this.#contBancar;
+            }
+
+            salut(){
+                console.log(`Buna ziua, eu sunt ${this.nume}`);
+            }
+        }
+
+        class Student extends Persoana{
+            facultate;
+            constructor(fn, ln, facultate){
+                super(fn, ln);
+                this.facultate      = facultate;
+            }
+            salut(){
+                super.salut();
+                console.log(`Sunt la facultate la ${this.facultate}`);
+            }
+        }
+
+
+        let persoana1 = new Persoana('Ana', 'Cosbuc');
+        persoana1.salut();
+
+        let student1 = new Student('Vasile', 'Pop', 'UTCN');
+        student1.salut();
+        persoana1.contBancar = 'RORTYE12345678'
+        console.log('cont bancar:', persoana1.contBancar);
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+</body>
+</html>
