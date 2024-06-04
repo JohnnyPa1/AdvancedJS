@@ -45,7 +45,7 @@ $(document).ready(function ($) {
     //console.log(data);
     $("#example").dataTable({
       paging: true,
-      pageLength: 1,
+      pageLength: 10,
       processing: true,
       serverSide: false,
       data: data.data,
@@ -55,6 +55,7 @@ $(document).ready(function ($) {
         { data: "prenume" },
         { data: "email" },
         { data: "telefon" },
+        { data: "inaltime"},
         {
           data: "datanastere",
           render: $.fn.dataTable.render.moment(
@@ -112,6 +113,7 @@ $(document).ready(function ($) {
         $("#email").val(res.data.email);
         $("#age").val(datan);
         $("#phone").val(res.data.telefon);
+        $("#inaltime").val(res.data.inaltime)
       },
     });
   });
