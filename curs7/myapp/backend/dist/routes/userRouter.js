@@ -38,6 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userRouter = void 0;
 const express_1 = __importDefault(require("express"));
 const bodyParser = __importStar(require("body-parser"));
+const path_1 = __importDefault(require("path"));
 const userModel = __importStar(require("../models/user"));
 const userRouter = express_1.default.Router();
 exports.userRouter = userRouter;
@@ -61,7 +62,16 @@ userRouter.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function*
 }));
 userRouter.post("/", jsonParser, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(req.body);
+    console.log(req.files);
+    let fileToUpload;
+    let uploadPath;
+    fileToUpload = req.files.poza; //Object is possibly 'null' or 'undefined'.
+    const newFileName = `${Date.now()}-_${fileToUpload.name}`;
+    uploadPath = path_1.default.join(__dirname, '..', '/uploads/', newFileName);
+    console.log(uploadPath);
+    fileToUpload.mv(uploadPath);
     const newUser = req.body;
+    newUser['poza'] = newFileName;
     userModel.create(newUser, (err, userId) => {
         if (err) {
             return res.status(500).json({ "message": err.message });

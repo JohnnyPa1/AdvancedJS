@@ -20,6 +20,7 @@ const findAll = (callback) => {
                 datanastere: row.datanastere,
                 telefon: row.telefon,
                 inaltime: row.inaltime,
+                poza: row.poza,
                 dataadaugare: row.dataadaugare,
                 actiune: "",
             };
@@ -45,6 +46,7 @@ const findOne = (userId, callback) => {
             datanastere: row.datanastere,
             telefon: row.telefon,
             inaltime: row.inaltime,
+            poza: row.poza,
             //dataadaugare: row.dataadaugare,
         };
         callback(null, user);
@@ -53,9 +55,9 @@ const findOne = (userId, callback) => {
 exports.findOne = findOne;
 // create user
 const create = (user, callback) => {
-    const queryString = "INSERT INTO jsusers (nume, prenume, email, datanastere, telefon, inaltime) VALUES (?, ?, ?, ?, ?, ?)";
+    const queryString = "INSERT INTO jsusers (nume, prenume, email, datanastere, telefon, inaltime, poza) VALUES (?, ?, ?, ?, ?, ?, ?)";
     console.log(user);
-    db_1.db.query(queryString, [user.nume, user.prenume, user.email, user.datanastere, user.telefon, user.inaltime], (err, result) => {
+    db_1.db.query(queryString, [user.nume, user.prenume, user.email, user.datanastere, user.telefon, user.inaltime, user.poza], (err, result) => {
         if (err) {
             callback(err);
         }
@@ -66,8 +68,8 @@ const create = (user, callback) => {
 exports.create = create;
 // update user
 const update = (user, callback) => {
-    const queryString = `UPDATE jsusers SET nume=?, prenume=?, telefon=?, email=?, inaltime=? WHERE id=?`;
-    db_1.db.query(queryString, [user.nume, user.prenume, user.telefon, user.email, user.inaltime, user.id], (err, result) => {
+    const queryString = `UPDATE jsusers SET nume=?, prenume=?, telefon=?, email=?, inaltime=?, poza=? WHERE id=?`;
+    db_1.db.query(queryString, [user.nume, user.prenume, user.telefon, user.email, user.inaltime, user.poza, user.id], (err, result) => {
         if (err) {
             callback(err);
         }
